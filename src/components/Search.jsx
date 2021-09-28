@@ -1,3 +1,6 @@
+// Components
+import Checkbox from "./Checkbox";
+
 // Styles
 import { createUseStyles } from "react-jss";
 
@@ -31,7 +34,7 @@ const useStyles = createUseStyles({
   },
 });
 
-const Search = ({ searchTerm, setSearchTerm }) => {
+const Search = ({ searchTerm, setSearchTerm, accountType, setAccountType }) => {
   const classes = useStyles();
 
   return (
@@ -46,12 +49,27 @@ const Search = ({ searchTerm, setSearchTerm }) => {
       />
       <span className={classes.filterAccountType}>Filter Account Type</span>
       <div className={classes.accountTypeOptionsWrapper}>
-        <input type="checkbox" id="gold" name="gold" value="Gold" />
-        <label htmlFor="gold">Gold</label>
-        <input type="checkbox" id="silver" name="silver" value="Silver" />
-        <label htmlFor="silver">Silver</label>
-        <input type="checkbox" id="bronze" name="bronze" value="Bronze" />
-        <label htmlFor="bronze">Bronze</label>
+        <Checkbox
+          id="gold"
+          name="gold"
+          value="Gold"
+          accountType={accountType}
+          setAccountType={setAccountType}
+        />
+        <Checkbox
+          id="silver"
+          name="silver"
+          value="Silver"
+          accountType={accountType}
+          setAccountType={setAccountType}
+        />
+        <Checkbox
+          id="bronze"
+          name="bronze"
+          value="Bronze"
+          accountType={accountType}
+          setAccountType={setAccountType}
+        />
       </div>
     </>
   );

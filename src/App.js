@@ -29,8 +29,23 @@ const useStyles = createUseStyles({
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
   const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
+  const [accountType, setAccountType] = useState([]);
   const classes = useStyles();
+
+  const setTheFilteredResults = () => {
+    console.log("in");
+    setFilteredResults(
+      results.filter(person => {
+        let x = false;
+        accountType.forEach(item => {
+          if (person.account_type === item) x = true;
+        });
+        return x;
+      })
+    );
+  };
 
   useEffect(() => {
     if (debouncedSearchTerm) {
@@ -46,14 +61,30 @@ const App = () => {
       } else {
         setResults(data.filter(person => person.firstName.startsWith(value)));
       }
+      if (!!accountType.length) setTheFilteredResults();
+    } else {
+      setResults([]);
     }
+    // eslint-disable-next-line
   }, [debouncedSearchTerm]);
+
+  useEffect(() => {
+    setTheFilteredResults();
+    // eslint-disable-next-line
+  }, [accountType]);
 
   return (
     <div className={classes.wrapper}>
-      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <Search
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        accountType={accountType}
+        setAccountType={setAccountType}
+      />
       <div className={classes.cardWrapper}>
-        {results && results.map(res => <Card key={res.id} data={res} />)}
+        {!!results.length && !!filteredResults.length
+          ? filteredResults.map(res => <Card key={res.id} data={res} />)
+          : results.map(res => <Card key={res.id} data={res} />)}
       </div>
     </div>
   );
