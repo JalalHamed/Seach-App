@@ -4,6 +4,7 @@ import { useDebounce } from "use-debounce";
 
 // Components
 import Search from "components/Search";
+import Card from "components/Card";
 
 // Data
 import data from "data.json";
@@ -14,6 +15,14 @@ import { createUseStyles } from "react-jss";
 const useStyles = createUseStyles({
   wrapper: {
     margin: 20,
+  },
+  cardWrapper: {
+    display: "flex",
+    justifyContent: "space-around",
+    flexWrap: "wrap",
+    margin: {
+      top: 25,
+    },
   },
 });
 
@@ -40,13 +49,12 @@ const App = () => {
     }
   }, [debouncedSearchTerm]);
 
-  useEffect(() => {
-    console.log(results);
-  }, [results]);
-
   return (
     <div className={classes.wrapper}>
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <div className={classes.cardWrapper}>
+        {results && results.map(res => <Card key={res.id} data={res} />)}
+      </div>
     </div>
   );
 };
