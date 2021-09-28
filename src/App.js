@@ -55,7 +55,7 @@ const App = () => {
   }, [debouncedSearchTerm]);
 
   useEffect(() => {
-    if (!!accountType.length)
+    if (!!accountType.length) {
       setFilteredResults(
         results.filter(person => {
           let x = false;
@@ -65,8 +65,16 @@ const App = () => {
           return x;
         })
       );
+    } else {
+      setFilteredResults([]);
+    }
     // eslint-disable-next-line
   }, [accountType, results]);
+
+  useEffect(() => {
+    console.log("results", results);
+    console.log("filteredResults", filteredResults);
+  }, [results, filteredResults]);
 
   return (
     <div className={classes.wrapper}>
