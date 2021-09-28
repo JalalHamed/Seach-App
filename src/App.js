@@ -35,7 +35,7 @@ const App = () => {
   const classes = useStyles();
 
   const setTheFilteredResults = () => {
-    console.log("in");
+    console.log("in", results);
     setFilteredResults(
       results.filter(person => {
         let x = false;
@@ -61,7 +61,6 @@ const App = () => {
       } else {
         setResults(data.filter(person => person.firstName.startsWith(value)));
       }
-      if (!!accountType.length) setTheFilteredResults();
     } else {
       setResults([]);
     }
@@ -69,9 +68,9 @@ const App = () => {
   }, [debouncedSearchTerm]);
 
   useEffect(() => {
-    setTheFilteredResults();
+    if (!!accountType.length) setTheFilteredResults();
     // eslint-disable-next-line
-  }, [accountType]);
+  }, [accountType, results]);
 
   return (
     <div className={classes.wrapper}>
