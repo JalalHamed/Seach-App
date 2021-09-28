@@ -1,0 +1,18 @@
+[
+  { "firstName": "John", "lastName": "Doe", "account_type": "gold" },
+  { "firstName": "Steph", "lastName": "Curry", "account_type": "silver" },
+  { "firstName": "Barak", "lastName": "Obama", "account_type": "bronze" },
+  { "firstName": "Leonard", "lastName": "Cohen", "account_type": "gold" },
+  { "firstName": "Donal", "lastName": "Trump", "account_type": "bronze" },
+  { "firstName": "Jennifer", "lastName": "Lopze", "account_type": "gold" },
+  { "firstName": "Tyron", "lastName": "Woodly", "account_type": "silver" },
+  { "firstName": "Max", "lastName": "Tompson", "account_type": "gold" },
+  { "firstName": "Nina", "lastName": "Dobrev", "account_type": "silver" },
+  { "firstName": "Mohammad", "lastName": "Ali", "account_type": "silver" },
+  { "firstName": "Eddie", "lastName": "Cooro", "account_type": "bronze" },
+  { "firstName": "Benjamin", "lastName": "Button", "account_type": "gold" },
+  { "firstName": "Selena", "lastName": "Gomez", "account_type": "gold" },
+  { "firstName": "Elon", "lastName": "Musk", "account_type": "silver" },
+  { "firstName": "Joe", "lastName": "Biden", "account_type": "silver" },
+  { "firstName": "Hedie", "lastName": "Tehrani", "account_type": "gold" }
+]
