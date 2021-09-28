@@ -34,18 +34,6 @@ const App = () => {
   const [accountType, setAccountType] = useState([]);
   const classes = useStyles();
 
-  const setTheFilteredResults = () => {
-    setFilteredResults(
-      results.filter(person => {
-        let x = false;
-        accountType.forEach(item => {
-          if (person.account_type === item) x = true;
-        });
-        return x;
-      })
-    );
-  };
-
   useEffect(() => {
     if (debouncedSearchTerm) {
       let value = debouncedSearchTerm.toLowerCase().trim();
@@ -67,7 +55,16 @@ const App = () => {
   }, [debouncedSearchTerm]);
 
   useEffect(() => {
-    if (!!accountType.length) setTheFilteredResults();
+    if (!!accountType.length)
+      setFilteredResults(
+        results.filter(person => {
+          let x = false;
+          accountType.forEach(item => {
+            if (person.account_type === item) x = true;
+          });
+          return x;
+        })
+      );
     // eslint-disable-next-line
   }, [accountType, results]);
 
