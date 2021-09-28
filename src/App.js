@@ -35,7 +35,6 @@ const App = () => {
   const classes = useStyles();
 
   const setTheFilteredResults = () => {
-    console.log("in", results);
     setFilteredResults(
       results.filter(person => {
         let x = false;
